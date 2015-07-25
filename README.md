@@ -16,19 +16,19 @@ Did you ever want to track a bunch of objects without referencing them directly 
 
 No dependencies required.
 
-```
+```java
 new WeakObjectPool<KEY, VALUE, DECORATOR>()
 ```
 
 # Example:
 
-```
+```java
 /* Create the pool. 
-		ID type is String. 
-		Object type is Integer.
-		Extra data type is String 
-		*/
-WeakObjectPool<String, Integer, String> pool =          new WeakObjectPool<>();
+     KEY type is String. 
+	 VALUE type is Integer (tracked object).
+	 DECORATOR type is String 
+*/
+WeakObjectPool<String, Integer, String> pool = new WeakObjectPool<>();
 
 // make integer object x
 Integer x = new Integer(314);
@@ -50,7 +50,7 @@ X was created on 1321807672613
 
 Now if x is not referenced anymore <i>and</i> the object x was erased by the garbage collector the object will automatically disappear from the pool (that's what weak referenced means). To demonstrate:
 
-```
+```java
 // get rid of all x references
 x=null;
 // make sure it's completely gone
